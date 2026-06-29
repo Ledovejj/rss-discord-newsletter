@@ -6,9 +6,8 @@ import './App.css';
 const getApiBase = () => {
   const envBase = import.meta.env.VITE_API_BASE;
   if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    if (!envBase || envBase.includes('localhost') || envBase.includes('127.0.0.1')) {
-      return 'https://nest-news-bot-1.onrender.com/api';
-    }
+    // Co-hosted on Render: use relative API path
+    return '/api';
   }
   return envBase || 'https://nest-news-bot-1.onrender.com/api';
 };
